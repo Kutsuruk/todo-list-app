@@ -1,10 +1,11 @@
 import {Button, Paper, TextField} from "@mui/material";
-import React, {useState} from "react";
+import React, {FC, useState} from "react";
 import {Add} from "@mui/icons-material";
+import {PanelProps} from "../../types";
 
 const DEFAULT_TODO = { name: '', description: '' }
 
-const Panel = () => {
+const Panel:FC<PanelProps> = ({ onAddTodo }) => {
     const [todo, setTodo] = useState({ name: '', description: ''})
 
     const onInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -12,22 +13,14 @@ const Panel = () => {
         setTodo({...todo, [name]: value} )
     }
 
-    const onButtonAddClick = (): void => {
-        console.log('@', todo)
-        setTodo(DEFAULT_TODO)
+    const onClick = () => {
+        onAddTodo(todo)
+        setTodo({ name: '', description: ''})
     }
 
     return(
         <Paper elevation={3}
-               style={{
-                   padding: '35px 20px',
-                   borderRadius: '2',
-                   display: 'flex',
-                   justifyContent: 'space-between',
-                   alignContent: 'center',
-                   gap: '2',
-                   width: '100%',
-               }}
+               className='panelPaper'
         >
             <TextField id="outlined-basic"
                        label="Name"
@@ -44,7 +37,7 @@ const Panel = () => {
 
             <Button variant="contained"
                     startIcon={<Add />}
-                    onClick={onButtonAddClick}
+                    onClick={onClick}
             >
                 Add
             </Button>
