@@ -24,6 +24,16 @@ const  App:FC = () => {
         setTodoList(todoList.filter((todo) => todo.id !== id))
     }
 
+    const onCheckTodo = (id: Todo['id']): void => {
+        setTodoList(todoList.map((todo) => {
+            if (todo.id === id) {
+                return { ...todo, checked: !todo.checked }
+            }
+
+            return todo
+        }))
+    }
+
   return (
       <div className='App'>
           <Box display='flex' flexDirection='column' width='550px'>
@@ -31,6 +41,7 @@ const  App:FC = () => {
               <Panel onAddTodo={onAddTodo} />
               <TodoList onDeleteTodo={onDeleteTodo}
                         todoLists={todoList}
+                        onCheckTodo={onCheckTodo}
               />
           </Box>
       </div>

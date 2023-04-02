@@ -3,7 +3,11 @@ import {Box, Checkbox, IconButton, Paper, Typography} from "@mui/material";
 import DeleteIcon from '@mui/icons-material/Delete';
 import {TodoItemProps} from "../../../types";
 
-const TodoItem: FC<TodoItemProps> = ({ todo, onDeleteTodo }) => {
+const TodoItem: FC<TodoItemProps> = ({ todo, onDeleteTodo , onCheckTodo }) => {
+    const onCheck = (): void => {
+        onCheckTodo(todo.id)
+    }
+
     return(
         <Paper elevation={3}
                className='todoItemPaper'
@@ -23,8 +27,13 @@ const TodoItem: FC<TodoItemProps> = ({ todo, onDeleteTodo }) => {
                 </Typography>
             </Box>
             <Box>
-                <Checkbox defaultChecked={todo.checked} />
-                <IconButton color='error' aria-label="delete" onClick={() => onDeleteTodo(todo.id)}>
+                <Checkbox onChange={onCheck}
+                          defaultChecked={todo.checked}
+                />
+                <IconButton color='error'
+                            aria-label="delete"
+                            onClick={() => onDeleteTodo(todo.id)}
+                >
                     <DeleteIcon />
                 </IconButton>
             </Box>

@@ -3,7 +3,7 @@ import TodoItem from "./TodoItem/TodoItem";
 import {FC} from "react";
 import {TodoListProps} from "../../types";
 
-const TodoList:FC<TodoListProps> = ({ todoLists, onDeleteTodo }) => {
+const TodoList:FC<TodoListProps> = ({ todoLists, onDeleteTodo, onCheckTodo }) => {
     return(
         <Box>
             {
@@ -11,6 +11,7 @@ const TodoList:FC<TodoListProps> = ({ todoLists, onDeleteTodo }) => {
                     <TodoItem key={todoList.id}
                               todo={todoList}
                               onDeleteTodo={onDeleteTodo}
+                              onCheckTodo={onCheckTodo}
                     />
                 ))
             }
