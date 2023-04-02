@@ -1,17 +1,14 @@
-import React, {FC, useState} from "react";
+import React, {FC} from "react";
 import {Box, Checkbox, IconButton, Paper, Typography} from "@mui/material";
 import DeleteIcon from '@mui/icons-material/Delete';
+import {Todo} from "../../../types";
 
 type TodoItemProps = {
-    todo: {
-        id: number,
-        name: string,
-        description: string,
-        checked: boolean
-    },
+    todo: Todo,
+    onDeleteTodo: (id: Todo['id']) => void,
 }
 
-const TodoItem: FC<TodoItemProps> = ({ todo }) => {
+const TodoItem: FC<TodoItemProps> = ({ todo, onDeleteTodo }) => {
     return(
         <Paper elevation={3}
                style={{
@@ -40,7 +37,7 @@ const TodoItem: FC<TodoItemProps> = ({ todo }) => {
             </Box>
             <Box>
                 <Checkbox defaultChecked={todo.checked} />
-                <IconButton color='error' aria-label="delete">
+                <IconButton color='error' aria-label="delete" onClick={() => onDeleteTodo(todo.id)}>
                     <DeleteIcon />
                 </IconButton>
             </Box>
