@@ -1,13 +1,13 @@
 import {FC} from "react";
-import {Typography} from "@mui/material";
+import {Box, Typography} from "@mui/material";
 
 const Header:FC = () => {
     return(
-        <header>
-            <Typography variant='h3'>
+        <Box textAlign='left'>
+            <Typography fontSize='35px' variant='h3'>
                 Todo List App
             </Typography>
-        </header>
+        </Box>
     )
 }
 
