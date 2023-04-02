@@ -15,12 +15,13 @@ const  App:FC = () => {
         { id: 4, name: 'Test name', description: 'Test Test Test Test Test', checked: true },
     ])
 
-    const onDeleteTodo = (id: Todo['id']): void => {
-        let newTodoList = todoList.filter((todo) => {
-            return todo.id !== id
-        })
+    const onAddTodo = (todo: Todo) => {
+    }
 
-        setTodoList(newTodoList)
+    const onDeleteTodo = (id: Todo['id']): void => {
+        setTodoList(todoList.filter((todo) => {
+            return todo.id !== id
+        }))
     }
 
   return (

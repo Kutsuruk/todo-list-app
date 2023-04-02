@@ -1,12 +1,7 @@
 import React, {FC} from "react";
 import {Box, Checkbox, IconButton, Paper, Typography} from "@mui/material";
 import DeleteIcon from '@mui/icons-material/Delete';
-import {Todo} from "../../../types";
-
-type TodoItemProps = {
-    todo: Todo,
-    onDeleteTodo: (id: Todo['id']) => void,
-}
+import {TodoItemProps} from "../../../types";
 
 const TodoItem: FC<TodoItemProps> = ({ todo, onDeleteTodo }) => {
     return(
