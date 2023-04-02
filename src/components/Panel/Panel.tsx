@@ -1,5 +1,6 @@
 import {Button, Paper, TextField} from "@mui/material";
 import React, {useState} from "react";
+import {Add} from "@mui/icons-material";
 
 const DEFAULT_TODO = { name: '', description: '' }
 
@@ -29,19 +30,20 @@ const Panel = () => {
                }}
         >
             <TextField id="outlined-basic"
-                       label="name"
+                       label="Name"
                        variant="outlined"
                        name='name'
                        onChange={onInputChange}
             />
             <TextField id="outlined-basic"
-                       label="description"
+                       label="Description"
                        variant="outlined"
                        name='description'
                        onChange={onInputChange}
             />
 
             <Button variant="contained"
+                    startIcon={<Add />}
                     onClick={onButtonAddClick}
             >
                 Add

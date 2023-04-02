@@ -1,4 +1,5 @@
 import {Box} from "@mui/material";
+import TodoItem from "./TodoItem/TodoItem";
 
 const todoLists = [
     { id: 1, name: 'Test name', description: 'Test Test Test', checked: false },
@@ -12,9 +13,7 @@ const TodoList = () => {
         <Box>
             {
                 todoLists.map((todoList) => (
-                    <Box key={todoList.id}>
-                        {todoList.description}
-                    </Box>
+                    <TodoItem key={todoList.id} todo={todoList} />
                 ))
             }
         </Box>
