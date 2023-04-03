@@ -11,6 +11,7 @@ export type TodoListProps = {
     onCheckTodo: (id: Todo['id']) => void,
     onEdit: (id: string) => void,
     editTodoId: string,
+    changeTodoItem: ({ name, description } : Omit<Todo, 'id' | 'checked'>) => void,
 }
 
 export type TodoItemProps = {

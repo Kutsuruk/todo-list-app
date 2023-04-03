@@ -40,8 +40,16 @@ const  App:FC = () => {
         setEditTodoId(id)
     }
 
-    const changeTodoItem = () => {
+    const changeTodoItem = ({ name, description }: Omit<Todo, 'id' | 'checked'>): void => {
+        setTodoList(todoList.map((todo) => {
+            if (todo.id === editTodoId) {
+                return { ...todo, name, description }
+            }
 
+            return todo
+        }))
+
+        setEditTodoId('')
     }
 
   return (
@@ -54,6 +62,7 @@ const  App:FC = () => {
                         onCheckTodo={onCheckTodo}
                         onEdit={onEdit}
                         editTodoId={editTodoId}
+                        changeTodoItem={changeTodoItem}
               />
           </Box>
       </div>
