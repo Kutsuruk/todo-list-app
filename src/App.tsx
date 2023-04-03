@@ -15,7 +15,9 @@ const  App:FC = () => {
         { id: nanoid(), name: 'Test name', description: 'Test', checked: false },
         { id: nanoid(), name: 'Test name', description: 'Test Test Test Test Test', checked: true },
     ])
+    const [editTodoId, setEditTodoId] = useState<string>('')
 
+    console.log(editTodoId)
     const onAddTodo = ({ name, description } : Omit<Todo, 'id' | 'checked'>) => {
         setTodoList([...todoList, {id: nanoid(), description, name, checked: false}])
     }
@@ -34,6 +36,14 @@ const  App:FC = () => {
         }))
     }
 
+    const onEdit = (id: string) => {
+        setEditTodoId(id)
+    }
+
+    const changeTodoItem = () => {
+
+    }
+
   return (
       <div className='App'>
           <Box display='flex' flexDirection='column' width='550px'>
@@ -42,6 +52,8 @@ const  App:FC = () => {
               <TodoList onDeleteTodo={onDeleteTodo}
                         todoLists={todoList}
                         onCheckTodo={onCheckTodo}
+                        onEdit={onEdit}
+                        editTodoId={editTodoId}
               />
           </Box>
       </div>

@@ -1,5 +1,5 @@
 export type Todo = {
-    id: string | number,
+    id: string,
     name: string,
     description: string,
     checked: boolean,
@@ -9,12 +9,20 @@ export type TodoListProps = {
     todoLists: Todo[],
     onDeleteTodo: (id: Todo['id']) => void,
     onCheckTodo: (id: Todo['id']) => void,
+    onEdit: (id: string) => void,
+    editTodoId: string,
 }
 
 export type TodoItemProps = {
     todo: Todo,
     onDeleteTodo: (id: Todo['id']) => void,
     onCheckTodo: (id: Todo['id']) => void,
+    onEdit: (id: string) => void,
+}
+
+export type EditTodoItemProps = {
+    todo: Todo,
+    onEditTodo: ({ name, description } : Omit<Todo, 'id' | 'checked'>) => void,
 }
 
 export type PanelProps = {

@@ -12,7 +12,7 @@ const Panel:FC<PanelProps> = ({ onAddTodo }) => {
 
     const onClick = (): void => {
         onAddTodo(todo)
-        setTodo({ name: '', description: '' } )
+        setTodo({ name: '', description: '' })
     }
 
     return(

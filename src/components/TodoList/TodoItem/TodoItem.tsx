@@ -1,11 +1,16 @@
 import React, {FC} from "react";
 import {Box, Checkbox, IconButton, Paper, Typography} from "@mui/material";
 import DeleteIcon from '@mui/icons-material/Delete';
+import EditIcon from '@mui/icons-material/Edit';
 import {TodoItemProps} from "../../../types";
 
-const TodoItem: FC<TodoItemProps> = ({ todo, onDeleteTodo , onCheckTodo }) => {
+const TodoItem: FC<TodoItemProps> = ({ todo, onDeleteTodo , onCheckTodo, onEdit }) => {
     const onCheck = (): void => {
         onCheckTodo(todo.id)
+    }
+
+    const onEditItem = (): void => {
+        onEdit(todo.id)
     }
 
     return(
@@ -30,6 +35,14 @@ const TodoItem: FC<TodoItemProps> = ({ todo, onDeleteTodo , onCheckTodo }) => {
                 <Checkbox onChange={onCheck}
                           defaultChecked={todo.checked}
                 />
+
+                <IconButton aria-label='edit'
+                            color='primary'
+                            onClick={onEditItem}
+                >
+                    <EditIcon />
+                </IconButton>
+
                 <IconButton color='error'
                             aria-label="delete"
                             onClick={() => onDeleteTodo(todo.id)}
